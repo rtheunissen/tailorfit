@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>tailorfit | Demo</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<script src="../tailorfit.js" type="text/javascript"></script>
+		<link href="./style.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+			
+				$('#strict > img').load(function(){
+					$(this).tailorfit(this.width, this.height);
+				});
+
+				$('#loose > img').load(function(){
+					$(this).tailorfit(this.width, this.height, false);
+				});
+				
+			});
+		</script>
+
+		<div class="image-container" id="strict">
+			<img src="bmo.png">
+			<p>Strict</p>
+		</div>
+
+		<div class="image-container" id="loose">
+			<img src="bmo.png">
+			<p>Loose</p>
+		</div>
+
+	</body>
+
+</html>
