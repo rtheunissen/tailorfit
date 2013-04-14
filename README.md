@@ -3,7 +3,7 @@
 ## jQuery plugin that fits and centers elements within their containers.
 
 Latest version will always be hosted at 
-> https://raw.github.com/rtheunissen/tailorfit/master/tailorfit-latest-min.js
+> http://dev.fhmp.net/tailorfit/tailorfit-latest-min.js
 
 ## [Demo](http://dev.fhmp.net/tailorfit/demo/)
 
@@ -17,5 +17,3 @@ Latest version will always be hosted at
         });
     });
 ```
-
-![TailorFit Logo](http://i.imgur.com/4281ImN.png)
