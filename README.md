@@ -2,7 +2,7 @@
 
 jQuery plugin that allows you to fit elements (like images) within their containers.
 
-## [Demo](http://github.com)
+## [Demo](http://dev.fhmp.net/tailorfit/demo/)
 
 #### Usage
 ```javascript
