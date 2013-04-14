@@ -17,5 +17,3 @@ Latest version will always be hosted at
         });
     });
 ```
-
-![TailorFit Logo](http://i.imgur.com/4281ImN.png)
