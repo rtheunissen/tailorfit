@@ -5,7 +5,7 @@
  * @copyright Rudolf Theunissen 2013
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link https://github.com/rtheunissen/tailorfit
- * @version 1.1.0
+ * @version 1.2
  */
 
  (function( $ ) {
