@@ -11,12 +11,10 @@ html, body { width: 100%; height: 100%;}
 	float: left;
 }
 
-.image-container p {
-	font-family: monospace;
-	position: absolute;
-	top:  5px;
-	left: 5px;
+.image-container > img {
+	display: block;
 }
+
 
 #strict 		{	background-color: #aaa;	}
 #loose 			{	background-color: #bbb;	}

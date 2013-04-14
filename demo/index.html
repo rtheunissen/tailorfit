@@ -11,26 +11,37 @@
 
 		<script type="text/javascript">
 			$(document).ready(function(){
+
+				$('.image-container > img').hide();
 			
 				$('#strict > img').load(function(){
-					$(this).tailorfit(this.width, this.height);
+					$(this).tailorfit({
+						'maxWidth'	  : this.width,
+						'maxHeight'   : this.height
+					});
+
+					$(this).fadeIn();
 				});
 
 				$('#loose > img').load(function(){
-					$(this).tailorfit(this.width, this.height, false);
+					$(this).tailorfit({
+						'maxWidth'	  : this.width,
+						'maxHeight'   : this.height,
+						'forceAspect' : false
+					});
+					
+					$(this).fadeIn();
 				});
-				
+
 			});
 		</script>
 
 		<div class="image-container" id="strict">
 			<img src="bmo.png">
-			<p>Strict</p>
 		</div>
 
 		<div class="image-container" id="loose">
 			<img src="bmo.png">
-			<p>Loose</p>
 		</div>
 
 	</body>
