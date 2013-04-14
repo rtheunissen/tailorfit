@@ -12,8 +12,8 @@ Latest version will always be hosted at
     $('#container > img').load(function(){
         // maxWidth, maxHeight, maintain aspect ratio
         $(this).tailorfit({
-                'maxWidth'  : this.width,
-                'maxHeight' : this.height
+                maxWidth  : this.width,
+                maxHeight : this.height
         });
     });
 ```
