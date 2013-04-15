@@ -2,6 +2,9 @@
 
 ## jQuery plugin that fits and centers elements within their containers.
 
+## [Demo](http://dev.fhmp.net/tailorfit/demo/)
+
+
 Tested on all user-agents available on Chrome 26 dev tools:
 * IE 7+
 * FF 4+
@@ -15,8 +18,6 @@ Tested on all user-agents available on Chrome 26 dev tools:
 
 ### Latest version will always be hosted at 
 > http://dev.fhmp.net/tailorfit/tailorfit-latest-min.js
-
-## [Demo](http://dev.fhmp.net/tailorfit/demo/)
 
 #### Usage
 ```javascript
