@@ -17,15 +17,16 @@ Tested on all user-agents available on Chrome 26 dev tools:
 
 
 ### Latest version will always be hosted at 
-> http://dev.fhmp.net/tailorfit/tailorfit-latest-min.js
+> http://dev.fhmp.net/tailorfit/tailorfit-latest.min.js
 
 #### Usage
 ```javascript
-    $('#container > img').load(function(){
+    $('#parent > img').load(function(){
         // maxWidth, maxHeight, maintain aspect ratio
         $(this).tailorfit({
                 maxWidth  : this.width,
-                maxHeight : this.height
+                maxHeight : this.height,
+                ratio     : this.width / this.height
         });
     });
 ```
