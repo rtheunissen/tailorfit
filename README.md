@@ -34,7 +34,6 @@ Tested on all user-agents available on Chrome 26 dev tools:
 You can also use expressions to evaluate a value.
 
 For example: `max-width: 80%-(200-h/4)` or `max-width: h / 2 - 20`, where `w` and `h` are the parent's width and height.
-Options for which expressions are supported are indicated with an -e below.
 
 Note: `(evp) = (expression | value | percentage)`
 
