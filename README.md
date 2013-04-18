@@ -21,11 +21,12 @@ Tested on all user-agents available on Chrome 26 dev tools:
 
 #### Usage
 ```javascript
-    $('#container > img').load(function(){
+    $('#parent > img').load(function(){
         // maxWidth, maxHeight, maintain aspect ratio
         $(this).tailorfit({
                 maxWidth  : this.width,
-                maxHeight : this.height
+                maxHeight : this.height,
+                ratio     : this.width / this.height
         });
     });
 ```
