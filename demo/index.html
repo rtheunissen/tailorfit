@@ -5,7 +5,7 @@
     <title>TailorFit Demo</title>
    
     <script src="js/jquery.min.js"></script>
-    <script src="../tailorfit-1.4.js"></script>
+    <script src="http://dev.fhmp.net/tailorfit/tailorfit-latest.min.js"></script>
     <script src="js/jquery.ddslick.min.js"></script>
 
     <style>
@@ -13,7 +13,7 @@
 		* {
 		  padding: 0;
 		  margin: 0;
-		  font-family: monospace;
+		  font-family: sans-serif;
 		}
 		html,
 		body {
@@ -95,37 +95,38 @@
 <body>
     <div id="control-panel">
         <div>
-            <div id="center"></div>
+            <div id="h-position"></div>
         </div>
 
         <div>
-            <div id="rounding"></div>
+            <div id="v-position"></div>
         </div>
 
         <div>
-            <input class="tcontrol" id="maxWidth" placeholder=
-            "maxWidth (int or %)" type="text">
+            <div id="rounding-method"></div>
         </div>
 
         <div>
-            <input class="tcontrol" id="maxHeight" placeholder=
-            "maxHeight (int or %)" type="text">
+            <div id="max-width"></div>
         </div>
 
         <div>
-            <input class="tcontrol" id="ratio" placeholder=
-            "ratio (int or %) | 0" type="text">
+            <div id="max-height"></div>
         </div>
 
-        <div>
-            <input class="tcontrol" id="offsetX" placeholder=
-            "offsetX (int or %)" type="text">
-        </div>
 
         <div>
-            <input class="tcontrol" id="offsetY" placeholder=
-            "offsetY (int or %)" type="text">
+            <div id="aspect-ratio"></div>
         </div>
+
+           <div>
+            <div id="x-offset"></div>
+        </div>
+
+           <div>
+            <div id="y-offset"></div>
+        </div>
+
     </div>
 
     <div id="content-view">
@@ -136,58 +137,144 @@
 
     $(document).ready(function(){
 
-    var center = [
-        { text: "center: vertical", value: 1, },
-        { text: "center: horizontal", value: 2, },
-        { text: "center: both", value: 3, }    
+    var hpos = [
+        { text: "left",     value: 1, },
+        { text: "center (default)",   value: 2, },
+        { text: "right",    value: 3, }    
+    ];
+
+    var vpos = [
+        { text: "top",        value: 1, },
+        { text: "center (default)",   value: 2, },
+        { text: "bottom",         value: 3, }    
     ];
 
     var rounding = [
-        { text: "round: round", value: 1, },
-        { text: "round: floor", value: 2, },
-        { text: "round: ceiling", value: 3, },
-        { text: "round: none", value: 4, }
+        { text: "round (default)",     value: 1, },
+        { text: "floor",     value: 2, },
+        { text: "ceiling",   value: 3, }
     ];
 
-    $('input[type="text"]').on('input', function(e){
-        setTextData($(this).attr('id'), e.target.value);
-    });
+    var maxH = [        
+        { text: "576",     value: 1, },
+        { text: "50%",     value: 2, },
+        { text: "w / 3",   value: 3, },
+        { text: "9000",   value: 4, },
+        { text: "0 (default)",   value: 5, }
+    ];
+
+    var maxW = [
+        { text: "1024",     value: 1, },
+        { text: "(50%+h*3)/2",     value: 2, },
+        { text: "h * 2",   value: 3, },
+        { text: "9000",   value: 4, },
+        { text: "0 (default)",   value: 5, }
+    ];
+
+        var ratios = [
+        { text: "1024 / 576",     value: 1, },
+        { text: "1",     value: 2, },
+        { text: "2",   value: 3, },
+        { text: "w / h",   value: 4, },
+        { text: "0 (default)",   value: 5, }
+    ];
+
+    var offsets = [
+        { text: "20",     value: 1, },
+        { text: "500",     value: 2, },
+        { text: "10%",   value: 3, },
+        { text: "h / 8",   value: 4, },
+        { text: "0 (default)",   value: 5, }
+    ];
 
 
-    function setTextData(option, value){
-        $('#image-container > img').tailorfit(option, value);
+    function setComboboxData(data, value){
+        $('#image-container > img').tailorfit(data, value.replace('(default)', ''));
     }
 
-    function setComboboxData(data){
-        var pairs = data.selectedData.text.split(':');
-        $('#image-container > img').tailorfit(pairs[0], pairs[1].trim());
-    }
-
-    $('#center').ddslick({
-        defaultSelectedIndex: 2,
+    $('#h-position').ddslick({
         width: "100%",
-        data: center,
+        data: hpos,
+         selectText: "Horizontal Position",
         onSelected: function(data){
-            setComboboxData(data);
+            setComboboxData('h-position', data.selectedData.text);
         }
     });
 
-    $('#rounding').ddslick({
-        defaultSelectedIndex: 0,
+    $('#v-position').ddslick({
+        width: "100%",
+        data: vpos,
+         selectText: "Vertical Position",
+        onSelected: function(data){
+            setComboboxData('v-position', data.selectedData.text);
+        }
+    });
+
+    $('#rounding-method').ddslick({
         width: "100%",
         data: rounding,
+         selectText: "Rounding Method",
         onSelected: function(data){
-            setComboboxData(data);
+            setComboboxData('rounding-method', data.selectedData.text);
+        }
+    });
+
+    $('#max-width').ddslick({
+        width: "100%",
+        data: maxW,
+         selectText: "Maximum Width",
+        onSelected: function(data){
+            setComboboxData('max-width', data.selectedData.text);
+        }
+    });
+
+    $('#max-height').ddslick({
+        width: "100%",
+        data: maxH,
+         selectText: "Maximum Height",
+        onSelected: function(data){
+            setComboboxData('max-height', data.selectedData.text);
+        }
+    });
+
+
+    $('#aspect-ratio').ddslick({
+        width: "100%",
+        data: ratios,
+         selectText: "Aspect Ratio",
+        onSelected: function(data){
+            setComboboxData('aspect-ratio', data.selectedData.text);
+        }
+    });
+
+    $('#x-offset').ddslick({
+        width: "100%",
+        data: offsets,
+         selectText: "Horizontal Offset",
+        onSelected: function(data){
+            setComboboxData('x-offset', data.selectedData.text);
+        }
+    });
+
+    $('#y-offset').ddslick({
+        width: "100%",
+        data: offsets,
+         selectText: "Vertical Offset",
+        onSelected: function(data){
+            setComboboxData('y-offset', data.selectedData.text);
         }
     });
 
     $('#image-container > img').load(function(){
         $(this).tailorfit({
-            maxWidth: this.width,
-            maxHeight: this.height,
-            ratio: this.width / this.height
+            'max-width'     : this.width,
+            'max-height'    : this.height,
+           'aspect-ratio'  : this.width / this.height
         });
     });
+   
+
+
     });
     </script>
 </body>

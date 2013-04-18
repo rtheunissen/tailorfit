@@ -17,7 +17,7 @@ Tested on all user-agents available on Chrome 26 dev tools:
 
 
 ### Latest version will always be hosted at 
-> http://dev.fhmp.net/tailorfit/tailorfit-latest-min.js
+> http://dev.fhmp.net/tailorfit/tailorfit-latest.min.js
 
 #### Usage
 ```javascript
@@ -29,3 +29,13 @@ Tested on all user-agents available on Chrome 26 dev tools:
         });
     });
 ```
+
+### Available options:
+* max-width
+* max-height
+* aspect-ratio
+* x-offset
+* y-offset
+* h-position
+* v-position
+* rounding-method
