@@ -41,7 +41,10 @@
         'h-position': 'center',
         
         // floor, ceiling, round
-        'rounding-method': 'round' 
+        'rounding-method': 'round', 
+
+        // contain, overflow
+        'crop': 'contain'
     };
 
     jQuery.fn.tailorfit = function (options, value) {
@@ -116,6 +119,16 @@
             var maxWidth = element.data('max-width');
             var maxHeight = element.data('max-height');
 
+            var cropping = element.data('crop');
+            var crop = element.data('crop') !== 'contain';
+
+            // set the overflow property based on the cropping option
+            if(crop){
+                parent.css('overflow', 'hidden');
+            } else {
+                parent.css('overflow', 'visible');
+            }
+
             // element position and size placeholders
             var x, y, w, h;
 
@@ -157,21 +170,48 @@
             // max height
             var mh = evaluateExpression(maxHeight, pw, ph, ph);
 
+
+            var pr = pw / ph;
+
             if (r === 0) {
                 // ratio of zero means that no ratio is enforced
-                h = Math.min(mh, ph);
-                w = Math.min(mw, pw);
+
+                if(crop){
+                    h = mh;
+                    w = mw;  
+                } else { // crop
+                    h = Math.min(mh, ph);
+                    w = Math.min(mw, pw);
+                }
+
             } else {
-                // available width
-                var aw = Math.min(mw, pw);
-                
-                // available height
-                var ah = Math.min(mh, ph);
-              
-                // if we maximise the area we get the equation
-                // max(w*h) : w <= aw && h <= ah && w / h = r.
-                h = Math.min(ah, aw / r);
-                w = r * h;
+                // ratio of not zero so ratio is enforced
+               
+                if(crop){
+                    
+                    // if the parent's ratio is greater,
+                    // resize about the width otherwise the height.
+                    if(pr >= r){
+                        w = Math.min(mw, pw);
+                        h = w / r;
+                    } else {
+                        h = Math.min(ph, mh);
+                        w = h * r;
+                    }
+
+                } else { 
+                    // contain
+
+                    // available width and height
+                    var ah = Math.min(mh, ph);
+                    var aw = Math.min(mw, pw);
+
+                    // if we maximise the area we get the equation
+                    // max(w*h) : w <= aw && h <= ah && w / h = r.
+                    
+                    h = Math.min(ah, aw / r);
+                    w = r * h;
+                }
             }
 
             // position x according to the h-position option, relative to the parent's width

@@ -5,7 +5,7 @@
     <title>TailorFit Demo</title>
    
     <script src="js/jquery.min.js"></script>
-    <script src="http://dev.fhmp.net/tailorfit/tailorfit-latest.min.js"></script>
+    <script src="../tailorfit-1.5.js"></script>
     <script src="js/jquery.ddslick.min.js"></script>
 
     <style>
@@ -123,8 +123,12 @@
             <div id="x-offset"></div>
         </div>
 
-           <div>
+        <div>
             <div id="y-offset"></div>
+        </div>
+
+        <div>
+            <div id="crop"></div>
         </div>
 
     </div>
@@ -185,6 +189,11 @@
         { text: "10%",   value: 3, },
         { text: "h / 8",   value: 4, },
         { text: "0 (default)",   value: 5, }
+    ];
+
+    var crops = [
+        { text: "contain",     value: 1, },
+        { text: "crop",     value: 2, }
     ];
 
 
@@ -265,11 +274,21 @@
         }
     });
 
+    $('#crop').ddslick({
+        width: "100%",
+        data: crops,
+         selectText: "Crop",
+        onSelected: function(data){
+            setComboboxData('crop', data.selectedData.text);
+        }
+    });
+
     $('#image-container > img').load(function(){
         $(this).tailorfit({
             'max-width'     : this.width,
             'max-height'    : this.height,
-           'aspect-ratio'  : this.width / this.height
+           'aspect-ratio'  : this.width / this.height,
+           'crop' : 'overflow'
         });
     });
    
