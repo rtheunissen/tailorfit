@@ -3,13 +3,14 @@
     "title": "TailorFit",
     "description": "jQuery plugin that fits and centers elements within their containers.",
     "keywords": [
-        "aspect",
-        "ratio",
+        "resize",
+        "image",
+        "ui"
         "center",
         "layout",
         "css"
     ],
-    "version": "1.5.7",
+    "version": "1.5.8",
     "author": {
         "name": "Rudolf Theunissen",
         "email": "rudolf.theunissen@gmail.com"
@@ -21,6 +22,7 @@
         }
     ],
     "demo": "http://dev.fhmp.net/tailorfit/demo/",
+    "homepage": "http://dev.fhmp.net/tailorfit",
     "dependencies": {
         "jquery": ">=1.5"
     }
