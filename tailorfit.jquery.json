@@ -9,7 +9,7 @@
         "layout",
         "css"
     ],
-    "version": "1.5.5",
+    "version": "1.5.6",
     "author": {
         "name": "Rudolf Theunissen",
         "email": "rudolf.theunissen@gmail.com"
@@ -22,6 +22,6 @@
     ],
     "demo": "http://dev.fhmp.net/tailorfit/demo/",
     "dependencies": {
-        "jquery": ">=1.5"
+        "jquery": ""
     }
 }
