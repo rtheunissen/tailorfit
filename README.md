@@ -33,16 +33,17 @@ Tested on all user-agents available on Chrome 26 dev tools:
 
 You can also use expressions to evaluate a value.
 
-For example: `max-width: 80%-(200-h/4)` or `max-width: h / 2 - 20`, where `w` and `h` are the parent's width and height.
+For example: `max-width: 0.8*w-(200-h/4)` or `max-width: h / 2 - 20`, where `w` and `h` are the parent's width and height.
 
-Note: `(evp) = (expression | value | percentage)`
+Note: `(expr) = expression, using (w, h, +, -, *, /, ^, %)`
 
 ### Available options:
-* max-width         (evp)
-* max-height        (evp)
-* aspect-ratio      (evp)
-* x-offset          (evp)
-* y-offset          (evp)
+* max-width         (expr)
+* max-height        (expr)
+* aspect-ratio      (expr)
+* x-offset          (expr)
+* y-offset          (expr)
 * h-position        (left | center | right)
 * v-position        (top | center | bottom)
 * rounding-method   (round | floor | ceiling)
+* overflow          (contain | crop)
