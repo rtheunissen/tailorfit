@@ -134,7 +134,7 @@
 
             // method to round each value with
             var rounded = getRoundingMethod(element.data('rounding-method'));
-         
+
             if(!(maxWidth && maxHeight)){
                 // if either or both of max width or max height weren't given
                 
@@ -411,10 +411,10 @@
     // returns a rounding method option based on the specified rounding option
     function getRoundingMethod(option) {
         switch (option) {
-            case 'round': return Math.round; // default first
-            case 'floor': return Math.floor;
-            default     : return Math.ceiling;
-            }
+            case 'round' : return Math.round; // default first
+            case 'floor' : return Math.floor;
+            default      : return Math.ceil;
+        }
     }
 
     // returns a value for the operator's precedence order
