@@ -1,7 +1,6 @@
 # TailorFit
 
-## jQuery plugin that fits and centers elements within their containers.
-
+## Positioning plugin that supports arbitrary expressions
 
 #### Usage
 ```js
